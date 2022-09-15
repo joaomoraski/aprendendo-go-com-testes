@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-// constantes em alguns casos podem melhorar a performance do codigo
 // Este nao é um deles kkkkkk
 const prefixoOlaPortugues = "Olá, "
 const prefixoOlaEspanhol = "Hola, "
@@ -10,12 +9,14 @@ const prefixoOlaFrances = "Bonjour, "
 const prefixoOlaJapones = "Ohayo, "
 const prefixoOlaIngles = "Hello, "
 
-// separação da regra de negocio
 func Ola(nome string, idioma string) string {
 	if nome == "" {
 		nome = "mundo"
 	}
-	prefixo := prefixoOlaPortugues
+	return prefixoSaudacao(idioma) + nome
+}
+
+func prefixoSaudacao(idioma string) (prefixo string) {
 	switch idioma {
 	case "frances":
 		prefixo = prefixoOlaFrances
@@ -25,9 +26,10 @@ func Ola(nome string, idioma string) string {
 		prefixo = prefixoOlaJapones
 	case "ingles":
 		prefixo = prefixoOlaIngles
-
+	default:
+		prefixo = prefixoOlaPortugues
 	}
-	return prefixo + nome
+	return
 }
 
 func main() {
